@@ -227,10 +227,29 @@ body{
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
- 
+}
 
-   /* center/cover
-   fixed no-repeat;  */
+.kolom-pesan{
+    width: 300px;
+    height: 100px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px 5px #ffba08;
+    color: #000000;
+}
+
+.kolom-pesan h2{
+    margin-bottom: 10px;
+}
+
+.kolom-pesan p{
+    font-size: 25px;
+    margin-bottom: 15px;
 }
 
 .data-box{

@@ -1,15 +1,3 @@
-// magnific popup
-$('.parent-container').magnificPopup({
-    delegate: 'a', // child items selector, by clicking on it popup will open
-    type: 'image',
-
-    gallery: {
-        // options for gallery
-        enabled: true
-    }
-    // other options
-  });
-
 // Map dan Looping harga
 const katalogMenu = [
     {
@@ -75,7 +63,15 @@ const katalogMenu = [
     }
 ];
 
-const panggilMenu = (item, index)=>{
+const jumlahMakanan = (array) => {
+    const jmlItemUnsur = document.querySelector('.kolom-pesan p');
+    const jumlahItem = array.reduce((accumulator) => {
+        return accumulator + 1;
+    }, 0);
+    jmlItemUnsur.innerHTML = jumlahItem;
+}
+
+const panggilMenu = (item, index, array)=>{
     const unsur = document.querySelector('#menu-zelict > .row');
 
     unsur.innerHTML += `
@@ -90,17 +86,18 @@ const panggilMenu = (item, index)=>{
 }
 
 katalogMenu.map(panggilMenu);
+jumlahMakanan(katalogMenu);
 
 const buttonUnsur = document.querySelector('.button-cari');
 buttonUnsur.addEventListener('click', ()=>{
     const hasilFilter = katalogMenu.filter((item, index)=>{
-            const inputUnsur = document.querySelector('.input-keyword');
-            const namaItem = item.nama.toLowerCase();
-            const kataKunci = inputUnsur.value.toLowerCase();
+            const inputUnsur    = document.querySelector('.input-keyword');
+            const namaItem      = item.nama.toLowerCase();
+            const kataKunci     = inputUnsur.value.toLowerCase();
 
             return namaItem.includes(kataKunci);
     })
     document.querySelector('#menu-zelict > .row').innerHTML = '';
-
     hasilFilter.map(panggilMenu);
+    jumlahMakanan(hasilFilter);
 });
